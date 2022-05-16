@@ -5,9 +5,22 @@ using BusinessLogicLayer.IServices;
 using BusinessLogicLayer.Services;
 using DataAccessLayer.IRepositories;
 using DataAccessLayer.Repositories;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using ObjectLayer;
 using SchoolApplication;
 using System.Web.Mvc;
+
+
+//Default DI with creating StartUp class
+//IHost host = Host.CreateDefaultBuilder(args).Build();
+
+//IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
+//IServiceCollection services = new ServiceCollection();
+//StartUp startup = new StartUp(config);
+//startup.ConfigureServices(services);
+//IServiceProvider serviceProvider = services.BuildServiceProvider();
 
 var container = ConfigureContainer();
 var main = container.Resolve<MainOperations<StudentEntityModel>>();
@@ -40,3 +53,4 @@ static IContainer ConfigureContainer()
 
     return builder.Build();
 }
+
